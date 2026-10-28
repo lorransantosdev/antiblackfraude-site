@@ -1,0 +1,45 @@
+# Apache (HostGator): compressão, cache e segurança básica.
+# Os arquivos de assets/ têm hash no nome; data/*.json é editável, então nunca fica em cache.
+Options -Indexes
+DirectoryIndex index.html
+
+# O site chega pelo Git do cPanel: a pasta .git e o README não ficam públicos
+RedirectMatch 404 /\.git
+RedirectMatch 404 ^/README\.md$
+
+# api/pix-criar e api/pix-status: mesmo endereço da Vercel, aqui atendidos pelo PHP
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^api/(pix-criar|pix-status)$ api/$1.php [L,QSA]
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType image/svg+xml .svg
+  AddType application/javascript .js
+  AddType application/json .json
+  AddType font/woff2 .woff2
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml text/xml
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 hour"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType application/json "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/png "access plus 1 week"
+  ExpiresByType image/svg+xml "access plus 1 week"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  <FilesMatch "\.json$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>

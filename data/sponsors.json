@@ -1,0 +1,27 @@
+{
+  "_como_usar": "Edite direto no servidor (não precisa de build). Preços em reais com ponto (349.90). Fora do 'periodo' ou com ativo:false, o espaço some. Oferta Verificada só entra se o historico cobrir 60+ dias e o preco_oferta for menor que o menor preço dos últimos 60 dias. categoria_espelho = uma 'categoria' do data/products.json.",
+  "periodo": { "inicio": "2026-11-10", "fim": "2026-11-30" },
+  "oferta_verificada": [
+    {
+      "id": "exemplo",
+      "ativo": false,
+      "marca": "Marca Exemplo",
+      "produto": "Fone Bluetooth Exemplo",
+      "emoji": "🎧",
+      "imagem": "",
+      "preco_oferta": 299.90,
+      "historico": [
+        { "data": "2026-08-15", "preco": 449.90 },
+        { "data": "2026-09-15", "preco": 429.90 },
+        { "data": "2026-10-15", "preco": 439.90 },
+        { "data": "2026-11-05", "preco": 419.90 }
+      ],
+      "url": "https://www.exemplo.com.br/oferta",
+      "utm": "utm_source=blackfraude&utm_medium=jogo&utm_campaign=bf26&utm_content=oferta_verificada",
+      "peso_rotacao": 1,
+      "categoria_espelho": "fones"
+    }
+  ],
+  "dica_patrocinada": { "ativo": false, "marca": "", "texto": "", "url": "" },
+  "afiliado": { "ativo": false, "texto": "", "url": "" }
+}
