@@ -1,4 +1,0 @@
-# Só os dois endpoints podem ser chamados de fora.
-<FilesMatch "^(_abacatepay|config|config\.exemplo)\.php$">
-  Require all denied
-</FilesMatch>

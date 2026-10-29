@@ -7,12 +7,6 @@ DirectoryIndex index.html
 RedirectMatch 404 /\.git
 RedirectMatch 404 ^/README\.md$
 
-# api/pix-criar e api/pix-status: mesmo endereço da Vercel, aqui atendidos pelo PHP
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteRule ^api/(pix-criar|pix-status)$ api/$1.php [L,QSA]
-</IfModule>
-
 <IfModule mod_mime.c>
   AddType image/svg+xml .svg
   AddType application/javascript .js
